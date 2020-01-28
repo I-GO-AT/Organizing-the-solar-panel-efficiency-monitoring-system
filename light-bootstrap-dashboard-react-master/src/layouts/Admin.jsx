@@ -73,6 +73,7 @@ class Admin extends Component {
       autoDismiss: 15
     });
   };
+  
   getRoutes = routes => {
     return routes.map((prop, key) => {
       if (prop.layout === "/admin") {
