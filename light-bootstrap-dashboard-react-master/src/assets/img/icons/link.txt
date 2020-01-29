@@ -1,0 +1,3 @@
+clock - https://www.flaticon.com/free-icon/clock_2441655
+temperature - https://www.flaticon.com/free-icon/thermometer_1086431?term=temperature&page=1&position=7
+humidity - https://www.flaticon.com/free-icon/humidity_727790?term=humidity&page=1&position=3
