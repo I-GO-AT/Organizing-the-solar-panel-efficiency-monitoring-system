@@ -17,6 +17,7 @@
 */
 import React, { Component } from "react";
 import { Row, Col } from "react-bootstrap";
+import Clock from 'react-live-clock';
 
 export class StatsCard__clock extends Component {
   render() {
@@ -32,7 +33,8 @@ export class StatsCard__clock extends Component {
             <Col xs={7}>
               <div className="numbers">
                 <p>{this.props.statsText}</p>
-                {this.props.statsValue}
+                {/* {this.props.statsValue} */}
+                <Clock format={'HH:mm:ss'} ticking={true} timezone={'US/Eastern'} />
               </div>
             </Col>
           </Row>

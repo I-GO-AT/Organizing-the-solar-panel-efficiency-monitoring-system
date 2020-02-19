@@ -28,12 +28,19 @@ import "./assets/css/pe-icon-7-stroke.css";
 
 import AdminLayout from "layouts/Admin.jsx";
 
+import LineChart from "components/Chart/LineChart"
+
+
+import Database from "views/Database"
+
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
       <Route path="/admin" render={props => <AdminLayout {...props} />} />
       <Redirect from="/" to="/admin/dashboard" />
     </Switch>
-  </BrowserRouter>,
+  </BrowserRouter>
+  // <Database></Database>
+  ,
   document.getElementById("root")
 );

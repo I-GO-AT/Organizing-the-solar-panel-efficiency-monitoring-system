@@ -53,6 +53,8 @@ import Controller_output from "components/Controller_output.js";
 import Surface_temp_chart from "components/Chart/Surface_temp_chart";
 
 import Divider from '@material-ui/core/Divider';
+import DataBaseCard from "components/Card/DataBaseCard";
+import LineChart from "components/Chart/LineChart";
 
 
 class Dashboard extends Component {
@@ -150,75 +152,95 @@ class Dashboard extends Component {
     return (
       <div className="content">
         <Grid fluid>
-          <Row>
-            <Col lg={3} sm={6}>
-              <StatsCard__clock
-                // bigIcon={<i className="pe-7s-clock text-warning" />}
-                bigIcon= {<img src={clock} width="42vx" height="42vx"></img>}
-                statsText="Current Time"
-                statsValue={this.state.time}
-                statsIcon={<i className="fa fa-refresh" />}
-                statsIconText="Real Time"
+        <Row>
+            <Col md={4}>
+              <Card
+                id="chartActivity"
+                title="2014 Sales"
+                category="All products including Taxes"
+                stats="Data information certified"
+                statsIcon="fa fa-check"
+                content={
+                  <div className="ct-chart">
+                    <ChartistGraph
+                      data={dataBar}
+                      type="Bar"
+                      options={optionsBar}
+                      responsiveOptions={responsiveBar}
+                    />
+                    {/* <TestChart></TestChart> */}
+                  </div>
+                }
+                legend={
+                  <div className="legend">{this.createLegend(legendBar)}</div>
+                }
               />
             </Col>
-            <Col lg={3} sm={6}>
-              <StatsCard__weather
-                bigIcon={this.state.weather}
-                statsText="Today's Weather"
-                statsValue={this.state.description}
-                statsIcon={<i className="fa fa-clock-o" />}
-                statsIconText="In the last half"
+
+            <Col md={4}>
+              <Card
+                title="Tasks"
+                category="Backend development"
+                stats="Updated 3 minutes ago"
+                statsIcon="fa fa-history"
+                content={
+                  <div className="table-full-width">
+                    <table className="table">
+                      <Tasks />
+                    </table>
+                  </div>
+                }
               />
             </Col>
-            <Col lg={3} sm={6}>
-              <StatsCard__temperature
-                bigIcon= {<img src={temperature} width="42vx" height="42vx"></img>}
-                statsText="Varient Temperature"
-                statsValue={this.state.temperature}
-                statsIcon={<i className="fa fa-clock-o" />}
-                statsIconText="In the last half"
-              />
-            </Col>
-            <Col lg={3} sm={6}>
-              <StatsCard__humidity
-                bigIcon= {<img src={humidity} width="42vx" height="42vx"></img>}
-                statsText="Humidity"
-                statsValue={this.state.humidity}
-                statsIcon={<i className="fa fa-clock-o" />}
-                statsIconText="In the last half"
+
+            <Col md={4}>
+              <Card
+                title="Tasks"
+                category="Backend development"
+                stats="Updated 3 minutes ago"
+                statsIcon="fa fa-history"
+                content={
+                  <div className="table-full-width">
+                    <table className="table">
+                      <Tasks />
+                    </table>
+                  </div>
+                }
               />
             </Col>
           </Row>
+
+
+
           <Row>
-            <Col md={4}>
-              <Card
+            <Col md={6}>
+              <DataBaseCard
                 statsIcon="fa fa-history"
                 id="chartHours"
                 title="Solar cell Suface temperature"
-                category="Real time"
+                categosry="Real time"
                 stats="Updated 15 seconds ago"
-                content={
-                  // <div className="ct-chart">
-                  //   <ChartistGraph
-                  //     data={dataSales}
-                  //     type="Line"
-                  //     options={optionsSales}
-                  //     responsiveOptions={responsiveSales}
-                  //   />
-                  // </div>
-                  <Surface_temp_chart></Surface_temp_chart>
-                }
+                // content={
+                //   // <div className="ct-chart">
+                //   //   <ChartistGraph
+                //   //     data={dataSales}
+                //   //     type="Line"
+                //   //     options={optionsSales}
+                //   //     responsiveOptions={responsiveSales}
+                //   //   />
+                //   // </div>
+                //   // <LineChart></LineChart>
+                // }
                 // legend={
                 //   <div className="legend">{this.createLegend(legendSales)}</div>
                 // }
               />
               
             </Col>
-            <Col md={4}>
-              <Card
+            <Col md={6}>
+              <DataBaseCard
                 statsIcon="fa fa-history"
                 title="Charge speed"
-                category="Real time"
                 stats="Updated 15 seconds ago"
                 content={
                   // <div
@@ -234,7 +256,7 @@ class Dashboard extends Component {
                 // }
               />
             </Col>
-            <Col md={4}>
+            {/* <Col md={4}>
               <Card
                 statsIcon="fa fa-history"
                 title="Power gauge"
@@ -259,53 +281,13 @@ class Dashboard extends Component {
                 // }
               />
               
-            </Col>
+            </Col> */}
 
 
 
           </Row>
 
-          <Row>
-            <Col md={6}>
-              <Card
-                id="chartActivity"
-                title="2014 Sales"
-                category="All products including Taxes"
-                stats="Data information certified"
-                statsIcon="fa fa-check"
-                content={
-                  <div className="ct-chart">
-                    <ChartistGraph
-                      data={dataBar}
-                      type="Bar"
-                      options={optionsBar}
-                      responsiveOptions={responsiveBar}
-                    />
-                    {/* <TestChart></TestChart> */}
-                  </div>
-                }
-                legend={
-                  <div className="legend">{this.createLegend(legendBar)}</div>
-                }
-              />
-            </Col>
 
-            <Col md={6}>
-              <Card
-                title="Tasks"
-                category="Backend development"
-                stats="Updated 3 minutes ago"
-                statsIcon="fa fa-history"
-                content={
-                  <div className="table-full-width">
-                    <table className="table">
-                      <Tasks />
-                    </table>
-                  </div>
-                }
-              />
-            </Col>
-          </Row>
         </Grid>
       </div>
     );

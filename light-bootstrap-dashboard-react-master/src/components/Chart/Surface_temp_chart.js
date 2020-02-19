@@ -8,11 +8,11 @@ import axios from "axios";
 const styles = theme => ({
   "chart-container": {
     height: 400,
-    width: 500,
+    width: 500
   }
 });
 
-class Suface_temp_chart extends React.Component {
+class Surface_temp_chart extends React.Component {
   state = {
     lineChartData: {
       labels: [],
@@ -157,4 +157,4 @@ class Suface_temp_chart extends React.Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(Suface_temp_chart);
+export default withStyles(styles, { withTheme: true })(Surface_temp_chart);
