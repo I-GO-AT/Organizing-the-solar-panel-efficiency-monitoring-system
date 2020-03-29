@@ -99,7 +99,7 @@ class TestChart extends React.Component {
   // }
 
   componentDidMount() {
-    setInterval( () => this.updateData(), 5000);
+    setInterval( () => this.updateData(), 3000);
   }
 
 

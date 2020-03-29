@@ -2,9 +2,17 @@ import React, { Component } from 'react'
 import axios from 'axios';
 
 export default class Weather_data extends Component {
-  
+ 
+  state = {
+    lon:40,
+    lat:-86,
+    description:"sunny",
+    icon:"sunny-icon",
+    temp:38,
+    humidity:50
+  }
   componentDidMount() {
-    setInterval( () => this.updateData(), 5000);
+    setInterval( () => this.updateData(), 500000);
   }
 
   updateData() {
@@ -12,25 +20,34 @@ export default class Weather_data extends Component {
     .then( response => response.data) // SUCCESS
     .then( weatherData => {
       if(weatherData){
-        let lon = weatherData.coord.lon;
-        let lat = weatherData.coord.lat;
+        let _lon = weatherData.coord.lon;
+        let _lat = weatherData.coord.lat;
         
-        let id = weatherData.weather.id;
-        let main = weatherData.weather.main;
-        let description = weatherData.weather.description;
-        let icon = weatherData.weather.icon;
+        let _id = weatherData.weather[0].id;
+        let _main = weatherData.weather[0].main;
+        let _description = weatherData.weather[0].description;
+        let _icon = weatherData.weather[0].icon;
         
-        let temp = weatherData.main.temp;
-        let feels_like = weatherData.main.feels_like;
-        let temp_min = weatherData.main.temp_min;
-        let temp_max = weatherData.main.temp_max;
-        let pressure = weatherData.main.pressure;
-        let humidity = weatherData.main.humidity;
+        let _temp = weatherData.main.temp;
+        let _feels_like = weatherData.main.feels_like;
+        let _temp_min = weatherData.main.temp_min;
+        let _temp_max = weatherData.main.temp_max;
+        let _pressure = weatherData.main.pressure;
+        let _humidity = weatherData.main.humidity;
         
-        let wind_speed = weatherData.wind.speed;
-        let wind_deg = weatherData.wind.deg;
-        let wind_gust = weatherData.wind.gust;
+        let _wind_speed = weatherData.wind.speed;
+        let _wind_deg = weatherData.wind.deg;
+        let _wind_gust = weatherData.wind.gust;
         console.log(weatherData)
+
+        this.setState({
+          lon:_lon,
+          lat:_lat,
+          description:_description,
+          icon:_icon,
+          temp:_temp,
+          humidity:_humidity
+        })
       }
       // const oldBtcDataSet = this.state.lineChartData.datasets[0];
       // const newBtcDataSet = { ...oldBtcDataSet };
@@ -57,7 +74,12 @@ export default class Weather_data extends Component {
   render() {
     return (
       <div>
-        weather_data
+        lon:{this.state.lon}<br/>
+        lat:{this.state.lat}<br/>
+        description:{this.state.description}<br/>
+        icon:{this.state.icon}<br/>
+        temp:{this.state.temp}<br/>
+        humidity:{this.state.humidity}
       </div>
     )
   }
