@@ -108,3 +108,133 @@ const insert_interval = setInterval(() => {
   }, 10000);       
 
 
+
+// API for Front-end
+ 
+  app.get('/controller_info_last', function(req,res){
+    connection.query('SELECT * FROM controller_info ORDER BY entry_id DESC limit 1', function(err,rows,fields){
+      if(err) throw err
+      console.log(rows)
+      res.json(rows)
+    })
+  })
+
+
+  app.get('/controller_info_last_L1H', function(req,res){
+    connection.query('SELECT * FROM controller_info WHERE timestamp > DATE_ADD(now(), INTERVAL -1 hour)', function(err,rows,fields){
+      if(err) throw err
+      console.log(rows)
+      res.json(rows)
+    })
+  })
+
+  app.get('/controller_info_last_L3H', function(req,res){
+    connection.query('SELECT * FROM controller_info WHERE timestamp > DATE_ADD(now(), INTERVAL -3 hour)', function(err,rows,fields){
+      if(err) throw err
+      console.log(rows)
+      res.json(rows)
+    })
+  })
+
+  app.get('/controller_info_last_L6H', function(req,res){
+    connection.query('SELECT * FROM controller_info WHERE timestamp > DATE_ADD(now(), INTERVAL -6 hour)', function(err,rows,fields){
+      if(err) throw err
+      console.log(rows)
+      res.json(rows)
+    })
+  })
+
+  app.get('/controller_info_last_L12H', function(req,res){
+    connection.query('SELECT * FROM controller_info WHERE timestamp > DATE_ADD(now(), INTERVAL -12 hour)', function(err,rows,fields){
+      if(err) throw err
+      console.log(rows)
+      res.json(rows)
+    })
+  })
+
+  app.get('/controller_info_last_LD', function(req,res){
+    connection.query('SELECT * FROM controller_info WHERE timestamp > DATE_ADD(now(), INTERVAL -24 hour)', function(err,rows,fields){
+      if(err) throw err
+      console.log(rows)
+      res.json(rows)
+    })
+  })
+
+  app.get('/controller_info_last_LW', function(req,res){
+    connection.query('SELECT * FROM controller_info WHERE timestamp > DATE_ADD(now(), INTERVAL -168 hour)', function(err,rows,fields){
+      if(err) throw err
+      console.log(rows)
+      res.json(rows)
+    })
+  })
+
+  app.get('/controller_info_last_LM', function(req,res){
+    connection.query('SELECT * FROM controller_info WHERE timestamp > DATE_ADD(now(), INTERVAL -7200 hour)', function(err,rows,fields){
+      if(err) throw err
+      console.log(rows)
+      res.json(rows)
+    })
+  })
+
+  app.get('/solar_info_last', function(req,res){
+    connection.query('SELECT * FROM surface_info ORDER BY timestamp DESC limit 1', function(err,rows,fields){
+      if(err) throw err
+      console.log(rows)
+      res.json(rows)
+    })
+  })
+
+  app.get('/solar_info_last_L1H', function(req,res){
+    connection.query('SELECT * FROM surface_info WHERE timestamp > DATE_ADD(now(), INTERVAL -1 hour)', function(err,rows,fields){
+      if(err) throw err
+      console.log(rows)
+      res.json(rows)
+    })
+  })
+
+  app.get('/solar_info_last_L3H', function(req,res){
+    connection.query('SELECT * FROM surface_info WHERE timestamp > DATE_ADD(now(), INTERVAL -3 hour)', function(err,rows,fields){
+      if(err) throw err
+      console.log(rows)
+      res.json(rows)
+    })
+  })
+  app.get('/solar_info_last_L6H', function(req,res){
+    connection.query('SELECT * FROM surface_info WHERE timestamp > DATE_ADD(now(), INTERVAL -6 hour)', function(err,rows,fields){
+      if(err) throw err
+      console.log(rows)
+      res.json(rows)
+    })
+  })
+
+  app.get('/solar_info_last_L12H', function(req,res){
+    connection.query('SELECT * FROM surface_info WHERE timestamp > DATE_ADD(now(), INTERVAL -12 hour)', function(err,rows,fields){
+      if(err) throw err
+      console.log(rows)
+      res.json(rows)
+    })
+  })
+
+  app.get('/solar_info_last_LD', function(req,res){
+    connection.query('SELECT * FROM surface_info WHERE timestamp > DATE_ADD(now(), INTERVAL -24 hour)', function(err,rows,fields){
+      if(err) throw err
+      console.log(rows)
+      res.json(rows)
+    })
+  })
+
+  app.get('/solar_info_last_LW', function(req,res){
+    connection.query('SELECT * FROM surface_info WHERE timestamp > DATE_ADD(now(), INTERVAL -168 hour)', function(err,rows,fields){
+      if(err) throw err
+      console.log(rows)
+      res.json(rows)
+    })
+  })
+
+  app.get('/solar_info_last_LM', function(req,res){
+    connection.query('SELECT * FROM surface_info WHERE timestamp > DATE_ADD(now(), INTERVAL -7200 hour)', function(err,rows,fields){
+      if(err) throw err
+      console.log(rows)
+      res.json(rows)
+    })
+  })
