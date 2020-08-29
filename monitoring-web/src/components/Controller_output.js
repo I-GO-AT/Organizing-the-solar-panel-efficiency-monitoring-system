@@ -9,6 +9,7 @@ import solar_current_img from'assets/img/controller_icons/solar_current.png';
 import battery_voltage_img from'assets/img/controller_icons/battery_voltage.png';
 import battery_current_img from'assets/img/controller_icons/battery_current.png';
 import battery_state_img from'assets/img/controller_icons/battery_state.png';
+import SolarPowerIndicator from './Chart/SolarPowerIndicator';
 
 const Td = styled.td`
   text-align: center;
@@ -23,6 +24,12 @@ const Table = styled.table`
   margin: auto;
 `
 
+const P = styled.p`
+  text-align: center;
+  font-family: "Roboto","Helvetica Neue",Arial,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 40px;
+`
 
 
 export default class Controller_output extends Component {
@@ -32,7 +39,9 @@ export default class Controller_output extends Component {
           solar_current :0,
           battery_voltage :0,
           battery_current :0,
-          battery_state : "Bulk"
+          battery_state : "Bulk",
+          solar_charged:0,
+          yield_kwh:0
       }
 
       componentDidMount() {
@@ -50,7 +59,9 @@ export default class Controller_output extends Component {
             let _battery_voltage = controller_output.battery_voltage.toFixed(2);
             let _battery_current = controller_output.battery_current.toFixed(2);
             let _battery_state = controller_output.battery_state;
-            
+
+            let _solar_charged = controller_output.solar_charged;
+            let _yield_kwh = controller_output.yield_kwh;
             // console.log(controller_output)
     
             this.setState({
@@ -59,6 +70,8 @@ export default class Controller_output extends Component {
               battery_voltage:_battery_voltage,
               battery_current:_battery_current,
               battery_state:_battery_state,
+              solar_charged:_solar_charged,
+              yield_kwh:_yield_kwh
             })
 
             console.log(this.state)
@@ -70,16 +83,16 @@ export default class Controller_output extends Component {
       }
       
       
-
       render() {
         return (
           <div>
+            <SolarPowerIndicator charged={this.state.solar_charged}></SolarPowerIndicator>
             <Table>
               <Tr>
-                <Td><img src={solar_voltage_img} height="66"></img></Td><Td>Solar Voltage : <br/>{this.state.solar_voltage}</Td><Td><img src={solar_current_img} height="66"></img></Td><Td>Solar Current : <br/>{this.state.solar_current}</Td>
+                <Td><img src={solar_voltage_img} height="66"></img></Td><Td>Solar Voltage : <br/>{this.state.solar_voltage}V</Td><Td><img src={solar_current_img} height="66"></img></Td><Td>Solar Current : <br/>{this.state.solar_current}A</Td>
               </Tr>
               <Tr>
-                <Td><img src={battery_voltage_img} height="66"></img></Td><Td>Battery Voltage : <br/>{this.state.battery_voltage}</Td><Td><img src={battery_current_img} height="66"></img></Td><Td>Battery Current : <br/>{this.state.battery_current}</Td>
+                <Td><img src={battery_voltage_img} height="66"></img></Td><Td>Battery Voltage : <br/>{this.state.battery_voltage}V</Td><Td><img src={battery_current_img} height="66"></img></Td><Td>Battery Current : <br/>{this.state.battery_current}A</Td>
               </Tr>
               <Tr>
                 <Td><img src={battery_state_img} height="66"></img></Td><Td>Battery State : <br/>{this.state.battery_state}</Td>

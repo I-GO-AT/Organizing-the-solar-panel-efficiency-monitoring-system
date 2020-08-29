@@ -15,6 +15,7 @@ export default class Expected_power extends Component {
         battery_state : "Bulk",
         solar_charged:0,
         yield_kwh:0,
+        count:0,
         sunrise:this.props.sunrise,
         sunset:this.props.sunset
     }
@@ -24,10 +25,30 @@ export default class Expected_power extends Component {
         console.log(prop)
         console.log("zzzzzzzzzzzzzzzzz")
         // this.setState({rec:prop.timePeriod})
-        this.setState({
-            sunrise:prop.sunrise,
-            sunset:prop.sunset
-        })
+        let sunset_time = prop.sunset
+        let sunrise_time = prop.sunrise
+
+        let current_time = Math.round((new Date()).getTime() / 1000);
+        let expected_time = sunset_time - current_time
+        if(expected_time>0 && current_time>=sunrise_time){
+            console.log(expected_time)
+            console.log("---------")
+            this.setState({
+                sunrise:prop.sunrise,
+                sunset:prop.sunset
+            })
+            return expected_time
+        }
+        else{
+            this.setState({
+                sunrise:prop.sunrise,
+                sunset:prop.sunset,
+                count:0,
+                yield_kwh:0
+            })
+            return 0
+        }
+
     }
 
     componentDidMount() {
@@ -53,8 +74,13 @@ export default class Expected_power extends Component {
         //이거를 정수로 변환해서 출력
         expected_power_w = Math.round(expected_power_w)
         console.log(expected_power_w)
-        console.log("---------")
+        console.log("---------expected_power_w")
         return expected_power_w
+    }
+
+    get_updated_yield_kwh(added_yield_kwh){
+        let updated_yield_kwh = (this.state.yield_kwh*this.state.count + added_yield_kwh)/(this.state.count+1)
+        return updated_yield_kwh
     }
 
     updateData() {
@@ -72,6 +98,8 @@ export default class Expected_power extends Component {
           let _solar_charged = controller_output.solar_charged;
           let _yield_kwh = controller_output.yield_kwh;
           // console.log(controller_output)
+
+          let updated_yield_kwh = this.get_updated_yield_kwh(_yield_kwh)
   
           this.setState({
             solar_voltage:_solar_voltage,
@@ -80,9 +108,11 @@ export default class Expected_power extends Component {
             battery_current:_battery_current,
             battery_state:_battery_state,
             solar_charged:_solar_charged,
-            yield_kwh:_yield_kwh
+            yield_kwh:updated_yield_kwh,
+            count: this.state.count + 1
           })
 
+        
           console.log(this.state)
         }
       })
@@ -114,9 +144,6 @@ export default class Expected_power extends Component {
                         expected = {this.get_expected_power(this.state.sunset)}
                         total = {3000}
                     ></SolarPowerIndicator_expected>
-                    
-                    
-                    
             </div>
         )
     }

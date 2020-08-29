@@ -42,29 +42,24 @@ const P = styled.p`
   font-size: 40px;
 `
 
-export default class SolarPowerIndicator extends Component {
+export default class SolarPowerIndicator_expected extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value:0,
-      expected:0,
-      total:0
+      expected:props.expected,
+      total:props.total
     };
   }
 
   componentDidMount = () => {
-        // console.log(this.state.value)
-        setInterval( () => {console.log(this.state.value); this.updateData();}, 3000);
+        console.log(this.state)
+        // setInterval( () => {console.log(this.state.value); this.updateData();}, 3000);
   }
 
-  updateData = () => {
-        this.setState({
-            value: this.getRandomValue()
-        })
-  }
-
-  getRandomValue = () => {
-        return Math.random();
+  componentWillReceiveProps(prop){
+      this.setState({
+        expected:prop.expected
+      }) 
   }
 
   render () {
@@ -74,15 +69,15 @@ export default class SolarPowerIndicator extends Component {
       //   maxValue={100}
       // />
       <div>
-      <GaugeChart id="gauge-chart5"
+      <GaugeChart id="gauge-chart2"
         nrOfLevels={420}
         arcsLength={[0.33, 0.33, 0.33]}
-        colors={['#5BE12C', '#F5CD19', '#EA4228']}
-        percent={this.state.value}
+        colors={['#EA4228', '#F5CD19', '#5BE12C']}
+        percent={this.state.expected/this.state.total}
         arcPadding={0.01}
         textColor={"#000000"}
       />
-      <P>{this.state.expected}/{this.state.total}</P>
+      <P>{this.state.expected}W</P>
       </div>
     )
   }

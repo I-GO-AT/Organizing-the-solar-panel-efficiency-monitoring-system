@@ -17,6 +17,7 @@
 */
 import LineChart from "components/Chart/LineChart";
 import React, {useState} from 'react'
+import Mixed_lineChart from "components/Chart/Mixed_lineChart";
 export default function DataBaseCard(props){
 
   const [timePeriod, setTimePeroid] = useState("L1H")
@@ -59,7 +60,9 @@ export default function DataBaseCard(props){
         >
 {/* <p>{timePeriod}</p> */}
           {/* {this.props.content} */}
-          <LineChart timePeriod={timePeriod} ></LineChart>
+          {/* <LineChart timePeriod={timePeriod} lable={props.title} ></LineChart> */}
+          {/* <Mixed_lineChart ></Mixed_lineChart> */}
+          {props.isMixed == "1"? <Mixed_lineChart timePeriod={timePeriod} lable={props.title} ></Mixed_lineChart> : <LineChart timePeriod={timePeriod} lable={props.title}></LineChart>}
           <div className="footer">
             {props.legend}
             {props.stats != null ? <hr /> : ""}

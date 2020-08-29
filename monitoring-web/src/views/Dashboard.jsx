@@ -62,6 +62,8 @@ import Expected_charged_time from "components/Expected_charged_time";
 import { StatsCard__sunnytime } from "components/StatsCard/StatsCard__sunnytime";
 import sunrise_icon from "assets/img/sunrise.png"
 import sunset_icon from "assets/img/sunset.png"
+import Expected_power from "components/Expected_power";
+import SurfaceAndChargeSpeedChart from "components/Chart/SurfaceAndChargeSpeedChart";
 
 class Dashboard extends Component {
 
@@ -229,26 +231,7 @@ class Dashboard extends Component {
                 // }
               />
             </Col>
-            <Col md={4}>
-              <Card
-                statsIcon="fa fa-history"
-                title="Charge speed"
-                category="Real time"
-                stats="Updated 15 seconds ago"
-                content={
-                  // <div
-                  //   id="chartPreferences"
-                  //   className="ct-chart ct-perfect-fourth"
-                  // >
-                  //   <ChartistGraph data={dataPie} type="Pie" />
-                  // </div>
-                  <TestChart></TestChart>
-                }
-                // legend={
-                //   <div className="legend">{this.createLegend(legendPie)}</div>
-                // }
-              />
-            </Col>
+
             <Col md={4}>
               <Card
                 statsIcon="fa fa-history"
@@ -263,8 +246,6 @@ class Dashboard extends Component {
                   //   <ChartistGraph data={dataPie} type="Pie" />
                   // </div>
                   <div>
-                    <SolarPowerIndicator></SolarPowerIndicator>
-                    <Divider></Divider>
                     <Controller_output></Controller_output>
                   </div>
                   // <TestChart></TestChart>
@@ -275,6 +256,29 @@ class Dashboard extends Component {
               />
               
             </Col>
+
+            <Col md={4}>
+              <Card
+                statsIcon="fa fa-history"
+                title="Charge speed"
+                category="Real time"
+                stats="Updated 15 seconds ago"
+                content={
+                  // <div
+                  //   id="chartPreferences"
+                  //   className="ct-chart ct-perfect-fourth"
+                  // >
+                  //   <ChartistGraph data={dataPie} type="Pie" />
+                  // </div>
+                  // <TestChart></TestChart>
+                  <SurfaceAndChargeSpeedChart></SurfaceAndChargeSpeedChart>
+                }
+                // legend={
+                //   <div className="legend">{this.createLegend(legendPie)}</div>
+                // }
+              />
+            </Col>
+
 
 
 
@@ -306,6 +310,51 @@ class Dashboard extends Component {
             <Col md={4}>
               <Card
                 statsIcon="fa fa-history"
+                title="Expected Power"
+                category="the dynamic real-time power output from the solar array"
+                stats="Real time"
+                content={
+                  // <div
+                  //   id="chartPreferences"
+                  //   className="ct-chart ct-perfect-fourth"
+                  // >
+                  //   <ChartistGraph data={dataPie} type="Pie" />
+                  // </div>
+                  <div>
+                    <Expected_power
+                      sunrise={this.state.sunrise}
+                      sunset={this.state.sunset}
+                    ></Expected_power>
+                    {/* <StatsCard__sunnytime 
+                                    bigIcon={<img src={sunrise_icon} width="55vx" height="55vx"></img>}
+                                    statsText="Today's Sunrise"
+                                    statsValue={this.state.sunrise}
+                                    statsIcon={<i className="fa fa-clock-o" />}
+                                    statsIconText="In the last half">
+                    </StatsCard__sunnytime>
+                    <StatsCard__sunnytime 
+                                    bigIcon={<img src={sunset_icon} width="55vx" height="55vx"></img>}
+                                    statsText="Today's Sunset"
+                                    statsValue={this.state.sunset}
+                                    statsIcon={<i className="fa fa-clock-o" />}
+                                    statsIconText="In the last half">
+                    </StatsCard__sunnytime>
+                    <SolarPowerIndicator_expected></SolarPowerIndicator_expected> */}
+                    {/* <Expected_charged_time></Expected_charged_time> */}
+                  </div>
+                  // <TestChart></TestChart>
+                }
+                // legend={
+                //   <div className="legend">{this.createLegend(legendSales)}</div>
+                // }
+              />
+              
+            </Col>
+
+
+            <Col md={4}>
+              <Card
+                statsIcon="fa fa-history"
                 title="Battery Voltage Chart"
                 category="Real time"
                 stats="Updated 15 seconds ago"
@@ -323,45 +372,7 @@ class Dashboard extends Component {
                 // }
               />
             </Col>
-            <Col md={4}>
-              <Card
-                statsIcon="fa fa-history"
-                title="Expected Power"
-                category="the dynamic real-time power output from the solar array"
-                stats="Real time"
-                content={
-                  // <div
-                  //   id="chartPreferences"
-                  //   className="ct-chart ct-perfect-fourth"
-                  // >
-                  //   <ChartistGraph data={dataPie} type="Pie" />
-                  // </div>
-                  <div>
-                    <StatsCard__sunnytime 
-                                    bigIcon={<img src={sunrise_icon} width="55vx" height="55vx"></img>}
-                                    statsText="Today's Sunrise"
-                                    statsValue={this.state.sunrise}
-                                    statsIcon={<i className="fa fa-clock-o" />}
-                                    statsIconText="In the last half">
-                    </StatsCard__sunnytime>
-                    <StatsCard__sunnytime 
-                                    bigIcon={<img src={sunset_icon} width="55vx" height="55vx"></img>}
-                                    statsText="Today's Sunset"
-                                    statsValue={this.state.sunset}
-                                    statsIcon={<i className="fa fa-clock-o" />}
-                                    statsIconText="In the last half">
-                    </StatsCard__sunnytime>
-                    <SolarPowerIndicator_expected></SolarPowerIndicator_expected>
-                    {/* <Expected_charged_time></Expected_charged_time> */}
-                  </div>
-                  // <TestChart></TestChart>
-                }
-                // legend={
-                //   <div className="legend">{this.createLegend(legendSales)}</div>
-                // }
-              />
-              
-            </Col>
+
 
           </Row>
         </Grid>

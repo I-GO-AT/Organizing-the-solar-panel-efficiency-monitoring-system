@@ -153,61 +153,38 @@ class Dashboard extends Component {
       <div className="content">
         <Grid fluid>
         <Row>
-            <Col md={4}>
-              <Card
-                id="chartActivity"
-                title="2014 Sales"
-                category="All products including Taxes"
-                stats="Data information certified"
-                statsIcon="fa fa-check"
-                content={
-                  <div className="ct-chart">
-                    <ChartistGraph
-                      data={dataBar}
-                      type="Bar"
-                      options={optionsBar}
-                      responsiveOptions={responsiveBar}
-                    />
-                    {/* <TestChart></TestChart> */}
-                  </div>
-                }
-                legend={
-                  <div className="legend">{this.createLegend(legendBar)}</div>
-                }
-              />
+        <Col md={6}>
+              <DataBaseCard
+                statsIcon="fa fa-history"
+                id="chartHours"
+                title="Solar Cell Chart"
+                categosry="Real time"
+                stats="Updated 15 seconds ago"
+                isMixed="1"
+              />       
             </Col>
 
-            <Col md={4}>
-              <Card
-                title="Tasks"
-                category="Backend development"
-                stats="Updated 3 minutes ago"
+            <Col md={6}>
+              <DataBaseCard
                 statsIcon="fa fa-history"
-                content={
-                  <div className="table-full-width">
-                    <table className="table">
-                      <Tasks />
-                    </table>
-                  </div>
-                }
+                id="chartHours"
+                title="Battery Chart"
+                categosry="Real time"
+                stats="Updated 15 seconds ago"
+                isMixed="1"
               />
+              
             </Col>
-
+{/* 
             <Col md={4}>
-              <Card
-                title="Tasks"
-                category="Backend development"
-                stats="Updated 3 minutes ago"
+              <DataBaseCard
                 statsIcon="fa fa-history"
-                content={
-                  <div className="table-full-width">
-                    <table className="table">
-                      <Tasks />
-                    </table>
-                  </div>
-                }
+                id="chartHours"
+                title="Solar cell Suface temperature"
+                categosry="Real time"
+                stats="Updated 15 seconds ago"
               />
-            </Col>
+            </Col> */}
           </Row>
 
 
@@ -220,6 +197,7 @@ class Dashboard extends Component {
                 title="Solar cell Suface temperature"
                 categosry="Real time"
                 stats="Updated 15 seconds ago"
+                
                 // content={
                 //   // <div className="ct-chart">
                 //   //   <ChartistGraph
@@ -240,17 +218,18 @@ class Dashboard extends Component {
             <Col md={6}>
               <DataBaseCard
                 statsIcon="fa fa-history"
-                title="Charge speed"
+                title="Charge Speed"
                 stats="Updated 15 seconds ago"
-                content={
+                isMixed="1"
+                // content={
                   // <div
                   //   id="chartPreferences"
                   //   className="ct-chart ct-perfect-fourth"
                   // >
                   //   <ChartistGraph data={dataPie} type="Pie" />
                   // </div>
-                  <TestChart></TestChart>
-                }
+                  // <TestChart></TestChart>
+                // }
                 // legend={
                 //   <div className="legend">{this.createLegend(legendPie)}</div>
                 // }

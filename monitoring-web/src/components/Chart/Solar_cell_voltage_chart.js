@@ -7,8 +7,8 @@ import axios from "axios";
 
 const styles = theme => ({
   "chart-container": {
-    height: 400,
-    width: 500
+    height: 525.05,
+    width: 470
   }
 });
 
@@ -46,11 +46,11 @@ class Solar_cell_voltage_chart extends React.Component {
           }
         ],
         yAxes: [{
-          ticks: {
-              max: 100,
-              min: 0,
-              stepSize: 10
-          }
+          // ticks: {
+          //     max: 100,
+          //     min: 0,
+          //     stepSize: 10
+          // }
       }]
       }
     }

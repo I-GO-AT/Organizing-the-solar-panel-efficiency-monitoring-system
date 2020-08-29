@@ -7,8 +7,8 @@ import axios from "axios";
 
 const styles = theme => ({
   "chart-container": {
-    height: 400,
-    width: 500
+    height: 488.05,
+    width: 470
   }
 });
 
@@ -46,11 +46,11 @@ class Surface_temp_chart extends React.Component {
           }
         ],
         yAxes: [{
-          ticks: {
-              max: 100,
-              min: 0,
-              stepSize: 10
-          }
+          // ticks: {
+          //     max: 100,
+          //     min: 0,
+          //     stepSize: 10
+          // }
       }]
       }
     }
@@ -114,7 +114,11 @@ class Surface_temp_chart extends React.Component {
         const oldBtcDataSet = this.state.lineChartData.datasets[0];
         const newBtcDataSet = { ...oldBtcDataSet };
         newBtcDataSet.data.push(_temperature);
-    
+
+        console.log("!-----------------!")
+        console.log(newBtcDataSet.data)
+        console.log("!-----------------!")
+
         const newChartData = {
           ...this.state.lineChartData,
           datasets: [newBtcDataSet],

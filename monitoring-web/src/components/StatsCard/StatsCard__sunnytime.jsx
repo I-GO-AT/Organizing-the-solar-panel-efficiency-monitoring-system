@@ -19,12 +19,14 @@ import React, { Component } from "react";
 import { Row, Col } from "react-bootstrap";
 export class StatsCard__sunnytime extends Component {
 
+
   unix_time_to_time(unix_time){
     // return new Date(unix_time * 1e3).toISOString().slice(-13, -5);
+    // unix_time = 1582154617
     return new Date(unix_time*1000).toLocaleTimeString("en-US")
   }
 
-
+  
 
   render() {
     return (
